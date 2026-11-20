@@ -37,3 +37,7 @@ Section, equation and figure numbers refer to arXiv v1 of the paper.
 | `scaling.py` | Sec. V D, Eq. (45): general classification (freeze-out for omega_eff ~ a^-sigma, H ~ a^-gamma) |
 | `isocurvature.py`, `dephasing.py`, `dlnn.py` | Sec. VI: nonlinear dephasing and d ln n / d ln delta_i |
 | `floquet_chi.py`, `plot_floquet_chi.py`, `plot_msd.py` | Sec. III B: the non-hierarchical example with a periodic coupling cos(chi/g) |
+
+## License
+
+The code in this repository is released under the MIT License (see `LICENSE`).
