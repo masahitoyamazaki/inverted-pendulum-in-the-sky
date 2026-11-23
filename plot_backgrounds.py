@@ -5,7 +5,7 @@ Uses the fast integrator fastkapitza.py."""
 import sys, numpy as np
 import matplotlib; matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from fastkapitza import integrate
+from fastkapitza import integrate, NS
 plt.rcParams.update({"font.size": 9})
 V0, kap, m, A0, H0 = 1., 5e3, 1e4, 50., 0.1
 chibar = -kap / m**2; V0n = V0 + kap * chibar
@@ -16,9 +16,9 @@ def weff(N):
 def run(bg, Nend=3.2, nout=120000):
     y0 = np.array([np.pi - 0.5, A0 + chibar, 0., 0.])
     if bg == "dS":
-        t, y, _ = integrate(y0, 0., Nend / H0, V0, kap, m, 0., H0, 200, nout, 1e300); return H0 * t, y
+        t, y, _ = integrate(y0, 0., Nend / H0, V0, kap, m, 0., H0, NS, nout, 1e300); return H0 * t, y
     p = {"RD": 0.5, "MD": 2 / 3}[bg]; t0 = p / H0
-    t, y, _ = integrate(y0, t0, t0 * np.exp(Nend / p), V0, kap, m, p, H0, 200, nout, 1e300)
+    t, y, _ = integrate(y0, t0, t0 * np.exp(Nend / p), V0, kap, m, p, H0, NS, nout, 1e300)
     return p * np.log(t / t0), y
 if __name__ == "__main__":
     f, ax = plt.subplots(figsize=(3.4, 2.5))

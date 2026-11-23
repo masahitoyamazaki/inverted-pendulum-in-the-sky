@@ -9,7 +9,7 @@ def job(x):
     d, e, sgn = x
     return x, run(d*(1+sgn*e))[1]
 if __name__ == "__main__":
-    with ProcessPoolExecutor() as ex:
+    with ProcessPoolExecutor(8) as ex:
         base = dict(zip(ds, [r[1] for r in ex.map(run, ds)]))
         res = dict(ex.map(job, jobs))
     print("delta_i   n/n(0.05)   dln n/dln delta_i (eps=1e-3)   (eps=1e-4)")

@@ -32,11 +32,11 @@ Section, equation and figure numbers refer to arXiv v1 of the paper.
 | `spinning_top.py`, `plot_spinning_top.py` | Fig. 5: inverted spinning top (Sec. IV) |
 | `backgrounds.py`, `plot_backgrounds.py` | Fig. 6 and the background independence of the stabilized phase (Secs. V A, V B); the figure uses `fastkapitza.py` |
 | `fastkapitza.py` | Fast fixed-step RK4 integrator (numba) for the model of Sec. III B with large m_chi, used for Figs. 6 and 7 |
-| `release_airy.py` | Sec. V B, Eq. (38): Airy matching at the release |
+| `release_airy.py` | Sec. V B, Eq. (38): Airy matching at the release (m_chi = 1e5, `fastkapitza.py`) |
 | `overdamped.py` | Sec. V C, Eq. (42): overdamped regime in radiation domination |
 | `delayed_fast.py`, `plot_delayed.py`, `delayed_data.txt` | Sec. V C, Eq. (43) and Fig. 7: delayed release (m_chi = 3e4; `delayed.py` is the scipy version with m_chi = 1000) |
 | `scaling.py` | Sec. V D, Eq. (45): general classification (freeze-out for omega_eff ~ a^-sigma, H ~ a^-gamma) |
-| `isocurvature.py`, `dephasing.py`, `dlnn.py` | Sec. VI: nonlinear dephasing and d ln n / d ln delta_i |
+| `isocurvature.py`, `dephasing.py`, `dlnn.py`, `scan_abundance.py` | Sec. VI: nonlinear dephasing, d ln n / d ln delta_i, and the scan of n(delta_i) (m_chi = 1e4) |
 | `floquet_chi.py`, `plot_floquet_chi.py`, `plot_msd.py` | Sec. III B: the non-hierarchical example with a periodic coupling cos(chi/g) |
 
 ## License
