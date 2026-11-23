@@ -1,15 +1,16 @@
 """Fig. Delayed: late-time number density relative to standard misalignment (theta_i=1)
-vs H_c/m~ for the delayed release in RD (model of delayed.py). Saves data to delayed_data.txt."""
+vs H_c/m~ for the delayed release in RD (delayed_fast.py: m_chi=3e4, kap=1.5e4, H0=3,
+which satisfy the no-resonance condition for all points). Saves data to delayed_data.txt."""
 import sys, os, numpy as np
 from concurrent.futures import ProcessPoolExecutor
-from delayed import delayed, standard
+from delayed_fast import delayed, standard
 xs = [0.1, 0.05, 0.03, 0.02, 0.01, 0.005, 0.003]
 if __name__ == "__main__":
     out = sys.argv[1] if len(sys.argv) > 1 else "Delayed.pdf"
     if not os.path.exists("delayed_data.txt"):
         with ProcessPoolExecutor() as ex:
             f = ex.submit(standard); dl = list(ex.map(delayed, xs)); n0 = f.result()
-        np.savetxt("delayed_data.txt", [(x, n/n0) for x, n in dl], header="H_c/m~   n/n_std(theta_i=1)")
+        np.savetxt("delayed_data.txt", [(x, n/n0) for x, n, r in dl], header="H_c/m~   n/n_std(theta_i=1)")
     d = np.loadtxt("delayed_data.txt")
     import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
     plt.rcParams.update({"font.size": 9})
